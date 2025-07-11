@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Quarto {
     private int numero;
     private String tipo;
@@ -8,7 +11,7 @@ public class Quarto {
         this.numero = numero;
         this.tipo = tipo;
         this.precoDiaria = precoDiaria;
-        this.disponivel = true; // o quanrto recebe o valor "true" pois sempre estara disponivel
+        this.disponivel = true; // o quarto recebe o valor "true" pois sempre estara disponivel
     }
 
     public int getNumero(){
@@ -39,4 +42,15 @@ public class Quarto {
         return disponivel;
     }
 
+    public void marcarComoDisponivel(){
+        this.disponivel = true;
+    }
+
+    public void marcarComoOcupado(){
+        this.disponivel = false;
+    }
+    
+     public static Quarto criarQuarto(int numero, String tipo, double precoDiaria) {
+        return new Quarto(numero, tipo, precoDiaria);
+    }
 }
