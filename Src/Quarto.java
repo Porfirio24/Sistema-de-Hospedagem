@@ -8,7 +8,7 @@ public class Quarto {
         this.numero = numero;
         this.tipo = tipo;
         this.precoDiaria = precoDiaria;
-        this.disponivel = true; // o quarto recebe o valor "true" pois sempre estara disponivel
+        this.disponivel = true; // o quarto recebe o valor "true", pois inicialmente estará disponivel
     }
 
     public int getNumero(){
@@ -47,7 +47,22 @@ public class Quarto {
         this.disponivel = false;
     }
     
-     public static Quarto criarQuarto(int numero, String tipo, double precoDiaria) {
+    public static Quarto criarQuarto(int numero, String tipo, double precoDiaria) {
         return new Quarto(numero, tipo, precoDiaria);
+    }
+
+    public void informarDados() {
+        System.out.println("===== Dados do Quarto =====");
+        System.out.println("Número: " + numero);
+        System.out.println("Tipo: " + tipo);
+        System.out.println("Preço Diária: R$" + precoDiaria);
+        System.out.println("Disponível: " + (disponivel ? "Sim" : "Não"));
+    }
+
+    public static void listarQuartos(List<Quarto> quartos) {
+        System.out.println("===== Lista de Quartos =====");
+        for (Quarto q : quartos) {
+            q.informarDados();
+        }
     }
 }
