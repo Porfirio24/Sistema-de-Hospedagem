@@ -26,9 +26,7 @@ public class Hospede {
         this.telefone = telefone;
         this.email = email;
         this.reservas = new ArrayList<>();
-    }
-
-    
+    } 
 
     public String getNome() {
         return nome;

@@ -22,7 +22,7 @@ public class Reserva {
     }
 
     public void registrar() {
-        if (quarto.isDisponivel()) {
+        if (quarto.estaDisponivel()) {
             quarto.marcarComoOcupado();
             calcularTotal();
             System.out.println("Reserva registrada com sucesso.");
@@ -91,5 +91,16 @@ public class Reserva {
 
     public void setQuarto(Quarto quarto) { 
         this.quarto = quarto; 
+    }
+
+    public void exibirDetalhes() {
+        System.out.println("Detalhes da Reserva:");
+        System.out.println("Data de Entrada: " + dataEntrada);
+        System.out.println("Data de Saída: " + dataSaida);
+        System.out.println("Quantidade de Dias: " + quantidadeDias);
+        System.out.println("Total: R$" + total);
+        System.out.println("Funcionário: " + funcionario.getNome());
+        System.out.println("Hóspede: " + hospede.getNome());
+        System.out.println("Quarto: " + quarto.getNumero() + " - " + quarto.getTipo());
     }
 }

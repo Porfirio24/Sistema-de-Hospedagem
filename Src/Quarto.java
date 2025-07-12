@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Quarto {
     private int numero;
     private String tipo;
@@ -34,11 +31,11 @@ public class Quarto {
         return precoDiaria;
     }
 
-    public void serPrecoDiaria(){
+    public void setPrecoDiaria(double precoDiaria){
         this.precoDiaria = precoDiaria;
     }
 
-    public boolean Disponivel(){
+    public boolean estaDisponivel(){
         return disponivel;
     }
 
