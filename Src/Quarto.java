@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Quarto {
     private int numero;
     private String tipo;
@@ -59,7 +61,7 @@ public class Quarto {
         System.out.println("Disponível: " + (disponivel ? "Sim" : "Não"));
     }
 
-    public static void listarQuartos(List<Quarto> quartos) {
+    public static void listarQuartos(ArrayList<Quarto> quartos) {
         System.out.println("===== Lista de Quartos =====");
         for (Quarto q : quartos) {
             q.informarDados();
