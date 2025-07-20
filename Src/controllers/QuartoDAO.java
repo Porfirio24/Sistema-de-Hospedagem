@@ -1,7 +1,7 @@
 package controllers;
 
 import data.ConnectionFactory;
-import models.Quarto;
+import Models.Quarto;
 
 import java.sql.*;
 import java.util.ArrayList;

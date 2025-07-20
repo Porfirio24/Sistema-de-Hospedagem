@@ -1,4 +1,4 @@
-package models;
+package Models;
 
 public class Funcionario {
     private int id;

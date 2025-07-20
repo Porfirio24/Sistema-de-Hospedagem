@@ -1,6 +1,6 @@
 package controllers;
 
-import models.Funcionario;
+import Models.Funcionario;
 import data.ConnectionFactory;
 
 import java.sql.*;
