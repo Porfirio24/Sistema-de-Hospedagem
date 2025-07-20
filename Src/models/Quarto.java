@@ -1,70 +1,41 @@
-import java.util.ArrayList;
+package models;
 
 public class Quarto {
+    private int id;
     private int numero;
     private String tipo;
-    private double precoDiaria;
-    private boolean disponivel;
+    private String status;
+    private double preco;
 
-    public Quarto(int numero, String tipo, double precoDiaria){
+    public Quarto(int id, int numero, String tipo, String status, double preco) {
+        this.id = id;
         this.numero = numero;
         this.tipo = tipo;
-        this.precoDiaria = precoDiaria;
-        this.disponivel = true; // o quarto recebe o valor "true", pois inicialmente estará disponivel
+        this.status = status;
+        this.preco = preco;
     }
 
-    public int getNumero(){
-        return numero;
+    // Construtor sem status (assume "disponível")
+    public Quarto(int id, int numero, String tipo, double preco) {
+        this(id, numero, tipo, "disponível", preco);
     }
 
-    public void setNumero(int numero){
-        this.numero = numero;
-    }
+    // Getters e Setters
+    public int getId() { return id; }
+    public int getNumero() { return numero; }
+    public String getTipo() { return tipo; }
+    public String getStatus() { return status; }
+    public double getPreco() { return preco; }
 
-    public  String getTipo(){
-        return tipo;
-    }
+    public void setId(int id) { this.id = id; }
+    public void setNumero(int numero) { this.numero = numero; }
+    public void setTipo(String tipo) { this.tipo = tipo; }
+    public void setStatus(String status) { this.status = status; }
+    public void setPreco(double preco) { this.preco = preco; }
 
-    public void setTipo(String tipo){
-        this.tipo = tipo;
-    }
-
-    public double getPrecoDiaria(){
-        return precoDiaria;
-    }
-
-    public void setPrecoDiaria(double precoDiaria){
-        this.precoDiaria = precoDiaria;
-    }
-
-    public boolean estaDisponivel(){
-        return disponivel;
-    }
-
-    public void marcarComoDisponivel(){
-        this.disponivel = true;
-    }
-
-    public void marcarComoOcupado(){
-        this.disponivel = false;
-    }
-    
-    public static Quarto criarQuarto(int numero, String tipo, double precoDiaria) {
-        return new Quarto(numero, tipo, precoDiaria);
-    }
-
-    public void informarDados() {
-        System.out.println("===== Dados do Quarto =====");
-        System.out.println("Número: " + numero);
-        System.out.println("Tipo: " + tipo);
-        System.out.println("Preço Diária: R$" + precoDiaria);
-        System.out.println("Disponível: " + (disponivel ? "Sim" : "Não"));
-    }
-
-    public static void listarQuartos(ArrayList<Quarto> quartos) {
-        System.out.println("===== Lista de Quartos =====");
-        for (Quarto q : quartos) {
-            q.informarDados();
-        }
+    @Override
+    public String toString() {
+        return "Quarto [id=" + id + ", número=" + numero + ", tipo=" + tipo + ", status=" + status + ", preço=" + preco + "]";
     }
 }
+
