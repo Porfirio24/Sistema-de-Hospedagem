@@ -1,4 +1,3 @@
-package Src.Models;
 
 public class Funcionario {
     private int id;

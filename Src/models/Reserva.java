@@ -1,106 +1,55 @@
-public class Reserva {
-    private String dataEntrada;
-    private String dataSaida;
-    private int quantidadeDias;
-    private double total;
-    private Funcionario funcionario;
-    private Hospede hospede;
-    private Quarto quarto;
 
-    public Reserva(String dataEntrada, String dataSaida, int quantidadeDias, Funcionario funcionario, Hospede hospede, Quarto quarto) {
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
+public class Reserva {
+    private int id;
+    private String nomeHospede;
+    private int numeroQuarto;
+    private LocalDate dataEntrada;
+    private LocalDate dataSaida;
+    private double valorTotal;
+
+    public Reserva(int id, String nomeHospede, int numeroQuarto, LocalDate dataEntrada, LocalDate dataSaida, double valorTotal) {
+        this.id = id;
+        this.nomeHospede = nomeHospede;
+        this.numeroQuarto = numeroQuarto;
         this.dataEntrada = dataEntrada;
         this.dataSaida = dataSaida;
-        this.quantidadeDias = quantidadeDias; // substituir por cálculo automático com datas futuramente
-        this.funcionario = funcionario;
-        this.hospede = hospede;
-        this.quarto = quarto;
+        this.valorTotal = valorTotal;
     }
 
-    public double calcularTotal() {
-        total = quantidadeDias * quarto.getPrecoDiaria();
-        return total;
+    public Reserva(String nomeHospede, int numeroQuarto, LocalDate dataEntrada, LocalDate dataSaida) {
+        this.nomeHospede = nomeHospede;
+        this.numeroQuarto = numeroQuarto;
+        this.dataEntrada = dataEntrada;
+        this.dataSaida = dataSaida;
     }
 
-    public void registrar() {
-        if (quarto.estaDisponivel()) {
-            quarto.marcarComoOcupado();
-            calcularTotal();
-            System.out.println("Reserva registrada com sucesso.");
-            System.out.println("Total a pagar: R$" + total);
-        } else {
-            System.out.println("Quarto indisponível.");
-        }
+    public void calcularValorTotal(double precoDiaria) {
+        long dias = ChronoUnit.DAYS.between(dataEntrada, dataSaida);
+        if (dias <= 0) dias = 1;
+        this.valorTotal = precoDiaria * dias;
     }
 
-    public void cancelar() {
-        quarto.marcarComoDisponivel();
-        System.out.println("Reserva cancelada.");
-    }
+    // Getters e Setters
+    public int getId() { return id; }
+    public String getNomeHospede() { return nomeHospede; }
+    public int getNumeroQuarto() { return numeroQuarto; }
+    public LocalDate getDataEntrada() { return dataEntrada; }
+    public LocalDate getDataSaida() { return dataSaida; }
+    public double getValorTotal() { return valorTotal; }
 
-    public String getDataEntrada() { 
-        return dataEntrada; 
-    }
+    public void setId(int id) { this.id = id; }
+    public void setNomeHospede(String nomeHospede) { this.nomeHospede = nomeHospede; }
+    public void setNumeroQuarto(int numeroQuarto) { this.numeroQuarto = numeroQuarto; }
+    public void setDataEntrada(LocalDate dataEntrada) { this.dataEntrada = dataEntrada; }
+    public void setDataSaida(LocalDate dataSaida) { this.dataSaida = dataSaida; }
+    public void setValorTotal(double valorTotal) { this.valorTotal = valorTotal; }
 
-    public void setDataEntrada(String dataEntrada) { 
-        this.dataEntrada = dataEntrada; 
-    }
-
-    public String getDataSaida() { 
-        return dataSaida; 
-    }
-
-    public void setDataSaida(String dataSaida) { 
-        this.dataSaida = dataSaida; 
-    }
-
-    public int getQuantidadeDias() { 
-        return quantidadeDias; 
-    }
-
-    public void setQuantidadeDias(int quantidadeDias) { 
-        this.quantidadeDias = quantidadeDias; 
-    }
-
-    public double getTotal() { 
-        return total; 
-    }
-
-    public void setTotal(double total) { 
-        this.total = total; 
-    }
-
-    public Funcionario getFuncionario() { 
-        return funcionario; 
-    }
-
-    public void setFuncionario(Funcionario funcionario) { 
-        this.funcionario = funcionario; 
-    }
-
-    public Hospede getHospede() { 
-        return hospede; 
-    }
-
-    public void setHospede(Hospede hospede) { 
-        this.hospede = hospede; 
-    }
-
-    public Quarto getQuarto() { 
-        return quarto; 
-    }
-
-    public void setQuarto(Quarto quarto) { 
-        this.quarto = quarto; 
-    }
-
-    public void exibirDetalhes() {
-        System.out.println("Detalhes da Reserva:");
-        System.out.println("Data de Entrada: " + dataEntrada);
-        System.out.println("Data de Saída: " + dataSaida);
-        System.out.println("Quantidade de Dias: " + quantidadeDias);
-        System.out.println("Total: R$" + total);
-        System.out.println("Funcionário: " + funcionario.getNome());
-        System.out.println("Hóspede: " + hospede.getNome());
-        System.out.println("Quarto: " + quarto.getNumero() + " - " + quarto.getTipo());
+    @Override
+    public String toString() {
+        return String.format("Reserva [ID: %d | Hóspede: %s | Quarto: %d | Entrada: %s | Saída: %s | Total: R$ %.2f]",
+                id, nomeHospede, numeroQuarto, dataEntrada, dataSaida, valorTotal);
     }
 }
