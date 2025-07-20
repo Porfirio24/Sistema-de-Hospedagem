@@ -1,41 +1,76 @@
-package Models;
+ppackage models;
 
-public class Quarto {
-    private int id;
+import java.io.Serializable;
+import java.util.Objects;
+
+public class Quarto implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int numero;
     private String tipo;
-    private String status;
-    private double preco;
+    private double precoDiaria;
+    private boolean disponivel;
 
-    public Quarto(int id, int numero, String tipo, String status, double preco) {
-        this.id = id;
+    public Quarto(int numero, String tipo, double precoDiaria, boolean disponivel) {
         this.numero = numero;
         this.tipo = tipo;
-        this.status = status;
-        this.preco = preco;
-    }
-
-    // Construtor sem status (assume "disponível")
-    public Quarto(int id, int numero, String tipo, double preco) {
-        this(id, numero, tipo, "disponível", preco);
+        this.precoDiaria = precoDiaria;
+        this.disponivel = disponivel;
     }
 
     // Getters e Setters
-    public int getId() { return id; }
-    public int getNumero() { return numero; }
-    public String getTipo() { return tipo; }
-    public String getStatus() { return status; }
-    public double getPreco() { return preco; }
+    public int getNumero() {
+        return numero;
+    }
 
-    public void setId(int id) { this.id = id; }
-    public void setNumero(int numero) { this.numero = numero; }
-    public void setTipo(String tipo) { this.tipo = tipo; }
-    public void setStatus(String status) { this.status = status; }
-    public void setPreco(double preco) { this.preco = preco; }
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public double getPrecoDiaria() {
+        return precoDiaria;
+    }
+
+    public void setPrecoDiaria(double precoDiaria) {
+        this.precoDiaria = precoDiaria;
+    }
+
+    public boolean isDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(boolean disponivel) {
+        this.disponivel = disponivel;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Quarto quarto = (Quarto) o;
+        return numero == quarto.numero;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numero);
+    }
 
     @Override
     public String toString() {
-        return "Quarto [id=" + id + ", número=" + numero + ", tipo=" + tipo + ", status=" + status + ", preço=" + preco + "]";
+        return "Quarto{" +
+                "numero=" + numero +
+                ", tipo='" + tipo + '\'' +
+                ", precoDiaria=" + precoDiaria +
+                ", disponivel=" + disponivel +
+                '}';
     }
 }
 

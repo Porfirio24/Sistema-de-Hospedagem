@@ -1,6 +1,6 @@
 package controllers;
 
-import Models.Funcionario;
+import models.Funcionario;
 import data.ConnectionFactory;
 
 import java.sql.*;
@@ -79,4 +79,3 @@ public Funcionario buscarPorLogin(String login) {
 }
 
 }
-

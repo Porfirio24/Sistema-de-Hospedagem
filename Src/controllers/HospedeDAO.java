@@ -1,6 +1,6 @@
 package controllers;
 
-import Models.Hospede;
+import models.Hospede;
 import data.ConnectionFactory;
 import java.sql.*;
 import java.util.*;

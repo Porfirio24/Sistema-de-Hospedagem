@@ -1,8 +1,8 @@
 package controllers;
 
 import data.ConnectionFactory;
-import Models.Funcionario;
-import Models.Reserva;
+import models.Funcionario;
+import models.Reserva;
 
 import java.sql.*;
 import java.time.temporal.ChronoUnit;

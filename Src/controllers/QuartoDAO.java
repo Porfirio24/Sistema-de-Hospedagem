@@ -1,7 +1,7 @@
 package controllers;
 
 import data.ConnectionFactory;
-import Models.Quarto;
+import models.Quarto;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -70,7 +70,48 @@ public class QuartoDAO {
         e.printStackTrace();
     }
     return false;
+    }
+    public Quarto buscarPorNumero(int numero) {
+    String sql = "SELECT * FROM quartos WHERE numero = ?";
+    try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+        stmt.setInt(1, numero);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            return new Quarto(
+                rs.getInt("id"),
+                rs.getInt("numero"),
+                rs.getString("tipo"),
+                rs.getString("status"),
+                rs.getDouble("preco")
+            );
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return null;
 }
+
+public void atualizarCampo(int id, String campo, Object valor) {
+    String sql = "UPDATE quartos SET " + campo + " = ? WHERE id = ?";
+
+    try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+        if (valor instanceof String) {
+            stmt.setString(1, (String) valor);
+        } else if (valor instanceof Double) {
+            stmt.setDouble(1, (Double) valor);
+        } else {
+            System.out.println("Tipo de valor inválido.");
+            return;
+        }
+
+        stmt.setInt(2, id);
+        stmt.executeUpdate();
+        System.out.println("Campo atualizado com sucesso.");
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
 }
 
 
