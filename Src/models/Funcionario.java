@@ -1,3 +1,4 @@
+package models;
 
 public class Funcionario {
     private int id;
@@ -14,6 +15,7 @@ public class Funcionario {
         this.senha = senha;
     }
 
+    // Getters e Setters
     public int getId() {
         return id;
     }

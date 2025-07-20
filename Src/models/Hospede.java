@@ -1,4 +1,4 @@
-
+package models;
 
 public class Hospede {
     private int id;
