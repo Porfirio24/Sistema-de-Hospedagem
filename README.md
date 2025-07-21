@@ -1,4 +1,4 @@
-# Sistema-de-Hospedagem 🏨
+# 🏨 Sistema de Pousada 🏨
 
 ## Descrição
 O **Sistema de Pousada** é uma aplicação Java orientada a objetos desenvolvida para auxiliar no gerenciamento de uma pousada, oferecendo suporte completo ao controle de hóspedes, quartos, reservas, funcionários, autenticação por login, além da geração de relatórios de ocupação e faturamento.
@@ -61,6 +61,10 @@ O sistema possui um funcionário principal (Gerente/admin) que poder ser acessad
 email: admin@pousada.com
 senha: admin123
 ```
+
+### 🧱 Arquitetura do Projeto
+
+A aplicação foi construída seguindo o padrão MVC (Model-View-Controller)
 
 | Camada                | Descrição                                                      | 
 |-----------------------|----------------------------------------------------------------|
