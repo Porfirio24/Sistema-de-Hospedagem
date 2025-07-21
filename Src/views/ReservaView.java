@@ -1,8 +1,5 @@
 package views;
 
-import controller.HospedeController;
-import controller.QuartoController;
-import controller.ReservaController;
 import models.Reserva;
 import util.DataUtil;
 import models.Quarto;
@@ -14,18 +11,20 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
+import controllers.HospedeController;
+import controllers.QuartoController;
+import controllers.ReservaController;
+
 public class ReservaView {
     private final Scanner scanner;
     private final ReservaController reservaController;
     private final QuartoController quartoController;
-    // private final HospedeController hospedeController;
 
     public ReservaView(Scanner scanner, ReservaController reservaController,
                      QuartoController quartoController, HospedeController hospedeController) {
         this.scanner = scanner;
         this.reservaController = reservaController;
         this.quartoController = quartoController;
-        // this.hospedeController = hospedeController;
     }
 
     public void exibirMenuReserva() throws IOException, ClassNotFoundException {

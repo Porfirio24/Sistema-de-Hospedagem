@@ -33,3 +33,12 @@ public class HospedeController {
     public void cadastrarHospede(Hospede hospede) throws IOException, ClassNotFoundException {
         hospedeDAO.salvar(hospede);
     }
+
+    public void atualizarHospede(Hospede hospede) throws IOException, ClassNotFoundException {
+        hospedeDAO.salvar(hospede);
+    }
+
+    public void removerHospede(int id) throws IOException, ClassNotFoundException {
+        hospedeDAO.remover(id);
+    }
+}

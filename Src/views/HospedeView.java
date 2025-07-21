@@ -1,6 +1,5 @@
 package views;
 
-import controller.HospedeController;
 import models.Hospede;
 import util.Validadores;
 
@@ -8,6 +7,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
+
+import controllers.HospedeController;
 
 public class HospedeView {
     private final Scanner scanner;
@@ -108,10 +109,6 @@ public class HospedeView {
         String email = scanner.nextLine();
         if (!email.isEmpty() && Validadores.validarEmail(email)) hospede.setEmail(email);
         
-        System.out.print("Nova senha (deixe em branco para manter): ");
-        String senha = scanner.nextLine();
-        if (!senha.isEmpty()) hospede.setSenha(senha);
-        
         System.out.printf("Telefone [%s]: ", hospede.getTelefone());
         String telefone = scanner.nextLine();
         if (!telefone.isEmpty() && Validadores.validarTelefone(telefone)) hospede.setTelefone(telefone);
@@ -168,9 +165,6 @@ public class HospedeView {
             System.out.println("Email já cadastrado!");
             return;
         }
-
-        System.out.print("Senha: ");
-        String senha = scanner.nextLine();
         
         System.out.print("Telefone: ");
         String telefone = scanner.nextLine();
@@ -185,7 +179,7 @@ public class HospedeView {
                 .max()
                 .orElse(0) + 1;
 
-        Hospede novoHospede = new Hospede(novoId, cpf, nome, email, senha, telefone);
+        Hospede novoHospede = new Hospede(novoId, cpf, nome, email, telefone);
         hospedeController.cadastrarHospede(novoHospede);
         System.out.println("Hóspede cadastrado com sucesso!");
     }

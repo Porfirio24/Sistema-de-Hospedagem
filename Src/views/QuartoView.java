@@ -1,12 +1,13 @@
 package views;
 
-import controller.QuartoController;
 import models.Quarto;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
+
+import controllers.QuartoController;
 
 public class QuartoView {
     private final Scanner scanner;

@@ -1,10 +1,11 @@
 package views;
 
-import controller.FuncionarioController;
 import models.Funcionario;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
+
+import controllers.FuncionarioController;
 
 public class FuncionarioView {
     private final Scanner scanner;
@@ -23,7 +24,6 @@ public class FuncionarioView {
                 System.out.println("2. Cadastrar Funcionário");
                 System.out.println("3. Editar Funcionário");
                 System.out.println("4. Remover Funcionário");
-                System.out.println("5. Cadastrar Hóspede");
             }
             System.out.println("0. Voltar");
             System.out.print("Escolha uma opção: ");
