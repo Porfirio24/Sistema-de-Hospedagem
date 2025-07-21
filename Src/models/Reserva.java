@@ -1,56 +1,110 @@
 package models;
 
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
+import java.util.Objects;
+import java.io.Serializable;
 
-public class Reserva {
+public class Reserva implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int id;
-    private String nomeHospede;
-    private int numeroQuarto;
     private LocalDate dataEntrada;
     private LocalDate dataSaida;
-    private double valorTotal;
+    private double total;
+    private int idHospede;
+    private int numeroQuarto;
+    private boolean confirmada;
 
-    public Reserva(int id, String nomeHospede, int numeroQuarto, LocalDate dataEntrada, LocalDate dataSaida, double valorTotal) {
+    public Reserva(int id, LocalDate dataEntrada, LocalDate dataSaida, double total, 
+                   int idHospede, int numeroQuarto, boolean confirmada) {
         this.id = id;
-        this.nomeHospede = nomeHospede;
-        this.numeroQuarto = numeroQuarto;
         this.dataEntrada = dataEntrada;
         this.dataSaida = dataSaida;
-        this.valorTotal = valorTotal;
-    }
-
-    public Reserva(String nomeHospede, int numeroQuarto, LocalDate dataEntrada, LocalDate dataSaida) {
-        this.nomeHospede = nomeHospede;
+        this.total = total;
+        this.idHospede = idHospede;
         this.numeroQuarto = numeroQuarto;
-        this.dataEntrada = dataEntrada;
-        this.dataSaida = dataSaida;
-    }
-
-    public void calcularValorTotal(double precoDiaria) {
-        long dias = ChronoUnit.DAYS.between(dataEntrada, dataSaida);
-        if (dias <= 0) dias = 1;
-        this.valorTotal = precoDiaria * dias;
+        this.confirmada = confirmada;
     }
 
     // Getters e Setters
-    public int getId() { return id; }
-    public String getNomeHospede() { return nomeHospede; }
-    public int getNumeroQuarto() { return numeroQuarto; }
-    public LocalDate getDataEntrada() { return dataEntrada; }
-    public LocalDate getDataSaida() { return dataSaida; }
-    public double getValorTotal() { return valorTotal; }
+    public int getId() {
+        return id;
+    }
 
-    public void setId(int id) { this.id = id; }
-    public void setNomeHospede(String nomeHospede) { this.nomeHospede = nomeHospede; }
-    public void setNumeroQuarto(int numeroQuarto) { this.numeroQuarto = numeroQuarto; }
-    public void setDataEntrada(LocalDate dataEntrada) { this.dataEntrada = dataEntrada; }
-    public void setDataSaida(LocalDate dataSaida) { this.dataSaida = dataSaida; }
-    public void setValorTotal(double valorTotal) { this.valorTotal = valorTotal; }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public LocalDate getDataEntrada() {
+        return dataEntrada;
+    }
+
+    public void setDataEntrada(LocalDate dataEntrada) {
+        this.dataEntrada = dataEntrada;
+    }
+
+    public LocalDate getDataSaida() {
+        return dataSaida;
+    }
+
+    public void setDataSaida(LocalDate dataSaida) {
+        this.dataSaida = dataSaida;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public int getIdHospede() {
+        return idHospede;
+    }
+
+    public void setIdHospede(int idHospede) {
+        this.idHospede = idHospede;
+    }
+
+    public int getNumeroQuarto() {
+        return numeroQuarto;
+    }
+
+    public void setNumeroQuarto(int numeroQuarto) {
+        this.numeroQuarto = numeroQuarto;
+    }
+
+    public boolean isConfirmada() {
+        return confirmada;
+    }
+
+    public void setConfirmada(boolean confirmada) {
+        this.confirmada = confirmada;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Reserva reserva = (Reserva) o;
+        return id == reserva.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 
     @Override
     public String toString() {
-        return String.format("Reserva [ID: %d | Hóspede: %s | Quarto: %d | Entrada: %s | Saída: %s | Total: R$ %.2f]",
-                id, nomeHospede, numeroQuarto, dataEntrada, dataSaida, valorTotal);
+        return "Reserva{" +
+                "id=" + id +
+                ", dataEntrada=" + dataEntrada +
+                ", dataSaida=" + dataSaida +
+                ", total=" + total +
+                ", idHospede=" + idHospede +
+                ", numeroQuarto=" + numeroQuarto +
+                ", confirmada=" + confirmada +
+                '}';
     }
 }
