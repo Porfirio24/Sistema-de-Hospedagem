@@ -1,4 +1,4 @@
-package controller;
+package controllers;
 
 import data.FuncionarioDAO;
 import models.Funcionario;
